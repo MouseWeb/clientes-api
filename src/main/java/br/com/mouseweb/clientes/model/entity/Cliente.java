@@ -1,8 +1,7 @@
 package br.com.mouseweb.clientes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -24,6 +23,7 @@ public class Cliente {
     private String cpf;
 
     @Column(name = "data_cadastro", updatable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
     @PrePersist
