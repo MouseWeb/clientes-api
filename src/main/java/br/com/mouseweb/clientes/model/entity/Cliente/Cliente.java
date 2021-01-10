@@ -23,7 +23,7 @@ public class Cliente {
     @CPF
     private String cpf;
 
-    @Column
+    @Column(name = "data_cadastro", updatable = false)
     private LocalDate dataCadastro;
 
 }
