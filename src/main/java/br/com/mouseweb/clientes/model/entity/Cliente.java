@@ -1,4 +1,4 @@
-package br.com.mouseweb.clientes.model.entity.Cliente;
+package br.com.mouseweb.clientes.model.entity;
 
 import lombok.Data;
 import lombok.Getter;
