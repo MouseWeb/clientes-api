@@ -17,7 +17,6 @@ public class WebConfig {
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
         List<String> all = Collections.singletonList("*");
-
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(all);
         corsConfiguration.setAllowedHeaders(all);
