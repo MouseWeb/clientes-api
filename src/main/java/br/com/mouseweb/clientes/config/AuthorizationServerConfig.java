@@ -53,4 +53,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("password")
                 .accessTokenValiditySeconds(1800);
     }
+
 }
