@@ -1,10 +1,13 @@
 package br.com.mouseweb.clientes.rest;
 
+import br.com.mouseweb.clientes.exception.UsuarioCadastradoException;
 import br.com.mouseweb.clientes.model.entity.Usuario;
 import br.com.mouseweb.clientes.model.repository.UsuarioRepository;
+import br.com.mouseweb.clientes.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -13,12 +16,15 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UsuarioController {
 
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void salvar(@RequestBody @Valid Usuario usuario){
-            usuarioRepository.save(usuario);
+        try{
+            service.salvar(usuario);
+        }catch (UsuarioCadastradoException e){
+            throw new ResponseStatusException( HttpStatus.BAD_REQUEST, e.getMessage() );
+        }
     }
-
 }

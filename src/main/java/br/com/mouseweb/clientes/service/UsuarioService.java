@@ -1,5 +1,6 @@
 package br.com.mouseweb.clientes.service;
 
+import br.com.mouseweb.clientes.exception.UsuarioCadastradoException;
 import br.com.mouseweb.clientes.model.entity.Usuario;
 import br.com.mouseweb.clientes.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class UsuarioService implements UserDetailsService {
     public Usuario salvar(Usuario usuario){
         boolean exists = repository.existsByUsername(usuario.getUsername());
         if(exists){
-            throw new UsernameNotFoundException(usuario.getUsername());
+            throw new UsuarioCadastradoException(usuario.getUsername());
         }
         return repository.save(usuario);
     }
