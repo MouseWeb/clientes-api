@@ -45,6 +45,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        // verificação de acesso a API
         clients
                 .inMemory()
                 .withClient("my-angular-app")
